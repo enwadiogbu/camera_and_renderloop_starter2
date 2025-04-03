@@ -12,14 +12,25 @@ const cubeMesh = new THREE.Mesh(cubeGeometry, cubeMaterial);
 scene.add(cubeMesh);
 
 // initialize the camera
-const camera = new THREE.PerspectiveCamera(
-  35,
-  window.innerWidth / window.innerHeight,
+// const camera = new THREE.PerspectiveCamera(
+//   35,
+//   window.innerWidth / window.innerHeight,
+//   0.1,
+//   200
+// );
+// camera.position.z = 5;
+// create an orthographic camera
+const aspectRatio = window.innerWidth / window.innerHeight;
+
+const camera = new THREE.OrthographicCamera(
+  -1 * aspectRatio,
+  1 * aspectRatio,
+  1,
+  -1,
   0.1,
   200
 );
 camera.position.z = 5;
-
 // initialize the renderer
 const canvas = document.querySelector("canvas.threejs");
 const renderer = new THREE.WebGLRenderer({
